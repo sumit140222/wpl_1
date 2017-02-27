@@ -1,0 +1,122 @@
+<?php
+ob_start();
+session_start();
+include_once 'login and registration form\dbconnect.php';
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Md Zahidul Islam</title>
+    <link rel="shortcut icon" href="logo.gif" type="image/gif">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                <img src="zahid.png">
+                    <a class="info">                        
+                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush ">Md. Zahidul Islam</strong><br>Assistant Professor<br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
+                    </a>
+                </li>
+                <li>
+                    <a href="about.php">About</a>
+                </li>
+                <li>
+                    <a href="education.php">Education</a>
+                </li>
+                <li>
+                    <a href="research.php">Research Interest</a>
+                </li>
+                <li>
+                    <a href="publication.php">Publication</a>
+                </li>
+                <li>
+                    <a href="courses.php">Courses</a>
+                </li>
+                <li>
+                    <a href="contact.php">Contact</a>
+                </li>
+                <?php if (isset($_SESSION['usr_id'])) { ?>        
+                <li class="uName" style="color:LavenderBlush "><a style="text-transform: uppercase;" >Logged in as <?php echo $_SESSION['usr_name']; ?></a></li>
+                <li class="menu-item"><a href="login and registration form\logout.php">Log Out</a></li>   
+                <?php } else { ?>
+                <li class="SignIn"><a href="login and registration form\login.php">Login</a></li>
+                <li class="SignIn"><a href="login and registration form\register.php">Sign Up</a></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Publication:</h1>
+                        <ol>
+                            <li>MS Thesis: A tableau-based workflow verification framework for Computation Tree Logic (CTL)Supervisor: Dr. Wendy MacCaull</li>
+                            <li>B.Sc. Thesis: A new matchmaking algorithm for resource discovery on grid. Supervisor: Dr. Rafiqul Islam</li>
+                            <li>Md. Zahidul Islam, Ahemd Shah Mashiyat, Kashif Nizam Khan and SM Masud Karim,"A Tableau Based Automated Theorem Prover Using High Performance Computing", in International Journal of Computers, Volume 7, Number 3, March 2012, pp. 597-607, Academy Publisher, Oulu, Finland.</li>
+                            <li>Md. Rafiqul Islam, Md. Zahidul Islam and Nazia Leyla, "A tree based approach to matchmaking algorithms for Resource Discovery", in International Journal of Network Management, Volume 18, Issue 5, pp. 427-436, September/October 2008, Wiley Publishers, Print ISSN: 1055-7148, DOI:10.1002/nem.686.</li>
+                            <li>Md. Zahidul Islam and Amit Kumar Mondal,"Towards a Standard Bangla PhotoOCR: Text Detection and Localization", in Proceedings of 17th International Conference on Computer and Information Technology (ICCIT), 22-23 December, 2014, Dhaka, Bangladesh, pp.198-203.</li>
+                            <li>Md. Zahidul Islam and Wendy MacCaull,"A One-Pass Tableau-Based Workflow Verification Framework", in The Third Workshop on Practical Aspects of Automated Reasoning (PAAR-12), associated with the 6th International Joint Conference on Automated Reasoning (IJCAR-2012), Manchester, UK</li>
+                            <li>Md. Zahidul Islam, Ahemd Shah Mashiyat, Kashif Nizam Khan and SM Masud Karim,"Towards A Tableau Based High Performance Automated Theorem Prover", in proceedings of The 14th International Conference on Computer and Information Technology (ICCIT 2010), Dhaka, Bangladesh.</li>
+                            <li>Md. Raﬁqul Islam, Md. Zahidul Islam and Nazia Leyla,"A Matchmaking Algorithm for Resource Discovery on Grid", in proceedings of The International Conference on Information and Communication Technology, 7-9 March, 2007, Dhaka, Bangladesh, pp.193-196.</li>
+                            <li>Kashif Nizam Khan, Md. Zahidul Islam, Jinat Rehana and Md. Saidur Rahman,"Development of a Bangla Speech Driven Application", in proceedings of The International Conference on Computer and Information Technology, 28-30 December, Islamic University of Technology, Gazipur-1704, Bangladesh, pp.1015-1020.</li>
+                        </ol>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

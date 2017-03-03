@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['usr_id'])) {
-	header("Location:\startbootstrap-simple-sidebar-gh-pages\index.php");
+	header("Location:/wpl_1/about.php");
 }
 
 include_once 'dbconnect.php';
@@ -43,7 +43,7 @@ if (isset($_POST['signup'])) {
 			$row = mysqli_fetch_array($result);
 			$_SESSION['usr_id'] = $row['t_id'];
 			$_SESSION['usr_name'] = $row['name'];
-			$successmsg = "Successfully Registered! <a href='\startbootstrap-simple-sidebar-gh-pages\index.php'>Click here to redirect...</a>";
+			$successmsg = "Successfully Registered! <a href='/wpl_1/about.php'>Click here to redirect...</a>";
 		} else {
 			$errormsg = "Error in registering...Please try again later!";
 		}
@@ -61,7 +61,7 @@ if (isset($_POST['signup'])) {
 	<body>
 		<header class="site-header">
 			<div class="container">
-				<a href="\startbootstrap-simple-sidebar-gh-pages\index.php" id="branding">
+				<a href="/wpl_1/about.php" id="branding">
 					<img src="user.png" alt="" class="logo">
 					<div class="logo-copy">
 						<h1 class="site-title">Teacher Authentication</h1>

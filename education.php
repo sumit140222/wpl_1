@@ -3,7 +3,18 @@ ob_start();
 session_start();
 include_once 'login and registration form\dbconnect.php';
 
+$sql = "SELECT title, miscellaneous, year, institution FROM education WHERE t_id = 3";
+$result = mysqli_query($connection, $sql);
+
+
+$sql2 = "SELECT * FROM `teacher` WHERE t_id=3";
+$basic_info = mysqli_query($connection, $sql2);
+$teacher_info = mysqli_fetch_array($basic_info);
+
+$name = $teacher_info['name'];
+$designation = $teacher_info['designation'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +26,7 @@ include_once 'login and registration form\dbconnect.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Md Zahidul Islam</title>
+    <title><?php echo $name ?></title>
     <link rel="shortcut icon" href="logo.gif" type="image/gif">
 
     <!-- Bootstrap Core CSS -->
@@ -43,7 +54,7 @@ include_once 'login and registration form\dbconnect.php';
                 <li class="sidebar-brand">
                 <img src="zahid.png">
                     <a class="info">                        
-                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush ">Md. Zahidul Islam</strong><br>Assistant Professor<br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
+                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush "><?php echo $name ?></strong><br><?php echo $designation ?><br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
                     </a>
                 </li>
                 <li>
@@ -81,7 +92,25 @@ include_once 'login and registration form\dbconnect.php';
                 <div class="row">
                     <div class="col-lg-12">
                         <ul>
-                            <li>
+                            
+                            <?php
+                                while($row = mysqli_fetch_assoc($result))
+                                {
+                                    echo "<li>";
+                                    echo "<h3><strong>". $row["title"]."</strong></h3>";
+                                    echo "<h4>". $row["institution"]."</h4>";
+                                    echo "<h4>Passing Year: ". $row["year"]."</h4>";
+                                    echo "<h4>". $row["miscellaneous"]."</h4>";
+                                    echo "</li>";
+                                }
+
+                            ?>
+
+
+
+
+
+                            <!-- <li>
                                 <h3>Master of Science in Computer Science</h3>
                                 <p><strong>St. Francis Xavier University, Antigonish, NS, Canada.</strong></p>
                                 <p><strong>Passing Year: 2012</strong></p>
@@ -104,7 +133,7 @@ include_once 'login and registration form\dbconnect.php';
                                 <p><strong> Jhenidah Cadet College, Jhenidah, Bangladesh.</strong></p>
                                 <p><strong>Passing Year: 1999</strong></p>
                                 <p><strong>Group : Science.</strong></p>
-                            </li>
+                            </li> -->
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                         </ul>
                     </div>

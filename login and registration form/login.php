@@ -4,7 +4,7 @@ session_start();
 include_once 'dbconnect.php';
 
 if(isset($_SESSION['usr_id'])!="") {
-	header("Location:\startbootstrap-simple-sidebar-gh-pages\about.php");
+	header("Location:/wpl_1/about.php");
 }
 
 //check if form is submitted
@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
 		$_SESSION['usr_typ'] = $row['user_type'];
 		
 		mysqli_query($connection, "UPDATE teacher SET last_login=now() WHERE email = '" . $email. "' and password = '" . md5($password) . "' ");		
-			header("Location: \startbootstrap-simple-sidebar-gh-pages\about.php");
+			header("Location: /wpl_1/about.php");
 	} 
 	else {
 		$errormsg = "Incorrect Email or Password!!!";
@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
 
 <header class="site-header">
 			<div class="container">
-				<a href="\startbootstrap-simple-sidebar-gh-pages\about.php" id="branding">
+				<a href="/wpl_1/about.php" id="branding">
 					<img src="user.png" alt="" class="logo">
 					<div class="logo-copy">
 						<h1 class="site-title">Teacher Authentication</h1>

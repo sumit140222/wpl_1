@@ -5,7 +5,7 @@ if(isset($_SESSION['usr_id'])) {
 	session_destroy();
 	unset($_SESSION['usr_id']);
 	unset($_SESSION['usr_name']);
-	header("Location: \startbootstrap-simple-sidebar-gh-pages\about.php");
+	header("Location: /wpl_1/about.php");
 } else {
 	header("Location: about.php");
 }

@@ -3,6 +3,13 @@ ob_start();
 session_start();
 include_once 'login and registration form\dbconnect.php';
 
+$sql = "SELECT * FROM `teacher` WHERE t_id=3";
+$basic_info = mysqli_query($connection, $sql);
+$row = mysqli_fetch_array($basic_info);
+
+
+$name = $row['name'];
+$designation = $row['designation'];
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +23,7 @@ include_once 'login and registration form\dbconnect.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Md Zahidul Islam</title>
+    <title><?php echo $name ?></title>
     <link rel="shortcut icon" href="logo.gif" type="image/gif">
 
     <!-- Bootstrap Core CSS -->
@@ -44,7 +51,7 @@ include_once 'login and registration form\dbconnect.php';
                 <li class="sidebar-brand">
                 <img src="zahid.png">
                     <a class="info">                        
-                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush ">Md. Zahidul Islam</strong><br>Assistant Professor<br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
+                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush "><?php echo $name ?></strong><br><?php echo $designation ?><br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
                     </a>
                 </li>
                 <li>
@@ -76,14 +83,24 @@ include_once 'login and registration form\dbconnect.php';
         </div>
         <!-- /#sidebar-wrapper -->
 
+        <?php
+$result = mysqli_query($connection, "SELECT name, email, photo, about, designation, phone FROM teacher WHERE name = 'Md. Zahidul Islam' ");
+$row = mysqli_fetch_array($result);
+
+$name = $row['name'];
+$email = $row['email'];
+$photo = $row['photo'];
+$about = $row['about'];
+$designation = $row['designation'];
+$phone = $row['phone'];
+?>
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1>About Me</h1>
-                        <p>I am Md. Zahidul Islam. I am working as an assistant professor of Computer Science and Engineering discipline at Khulna University. <br><br>I have completed an MS in Computer Science from the Department of Mathematics, Statistics and Computer Science of St. Francis Xavier University, NS, Canada. I have completed my B.Sc. in Computer Science and Engineering from Khulna University, Bangladesh. <br><br>During my MS study, I worked as a research assistant at Centre for Logic and Information under the supervision of Dr. Wendy MacCull. As a part of my research I developed a One-Pass Tableau based model checker to verify CTL properties of healthcare workflow models.</p>
-                        <p>My areas of interest include <code>Machine Learning</code>,<code>Computer Vision</code>,<code>Formal Verification</code>,<code>Model Checking</code>,<code>High Performance Computing</code> and <code>Artificial Intelligence</code>.</p>
+                        <p><?php echo $about ?></p>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">&lt; &gt;</a>
                     </div>
                 </div>

@@ -3,6 +3,16 @@ ob_start();
 session_start();
 include_once 'login and registration form\dbconnect.php';
 
+$sql = "SELECT info FROM `publication` WHERE t_id=3";
+$result = mysqli_query($connection, $sql);
+
+$sql = "SELECT * FROM `teacher` WHERE t_id=3";
+$basic_info = mysqli_query($connection, $sql);
+$row = mysqli_fetch_array($basic_info);
+
+
+$name = $row['name'];
+$designation = $row['designation'];
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +26,7 @@ include_once 'login and registration form\dbconnect.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Md Zahidul Islam</title>
+    <title><?php echo $name ?></title>
     <link rel="shortcut icon" href="logo.gif" type="image/gif">
 
     <!-- Bootstrap Core CSS -->
@@ -44,7 +54,7 @@ include_once 'login and registration form\dbconnect.php';
                 <li class="sidebar-brand">
                 <img src="zahid.png">
                     <a class="info">                        
-                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush ">Md. Zahidul Islam</strong><br>Assistant Professor<br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
+                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush "><?php echo $name ?></strong><br><?php echo $designation ?><br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
                     </a>
                 </li>
                 <li>
@@ -83,16 +93,16 @@ include_once 'login and registration form\dbconnect.php';
                     <div class="col-lg-12">
                         <h1>Publication:</h1>
                         <ol>
-                            <li>MS Thesis: A tableau-based workflow verification framework for Computation Tree Logic (CTL)Supervisor: Dr. Wendy MacCaull</li>
-                            <li>B.Sc. Thesis: A new matchmaking algorithm for resource discovery on grid. Supervisor: Dr. Rafiqul Islam</li>
-                            <li>Md. Zahidul Islam, Ahemd Shah Mashiyat, Kashif Nizam Khan and SM Masud Karim,"A Tableau Based Automated Theorem Prover Using High Performance Computing", in International Journal of Computers, Volume 7, Number 3, March 2012, pp. 597-607, Academy Publisher, Oulu, Finland.</li>
-                            <li>Md. Rafiqul Islam, Md. Zahidul Islam and Nazia Leyla, "A tree based approach to matchmaking algorithms for Resource Discovery", in International Journal of Network Management, Volume 18, Issue 5, pp. 427-436, September/October 2008, Wiley Publishers, Print ISSN: 1055-7148, DOI:10.1002/nem.686.</li>
-                            <li>Md. Zahidul Islam and Amit Kumar Mondal,"Towards a Standard Bangla PhotoOCR: Text Detection and Localization", in Proceedings of 17th International Conference on Computer and Information Technology (ICCIT), 22-23 December, 2014, Dhaka, Bangladesh, pp.198-203.</li>
-                            <li>Md. Zahidul Islam and Wendy MacCaull,"A One-Pass Tableau-Based Workflow Verification Framework", in The Third Workshop on Practical Aspects of Automated Reasoning (PAAR-12), associated with the 6th International Joint Conference on Automated Reasoning (IJCAR-2012), Manchester, UK</li>
-                            <li>Md. Zahidul Islam, Ahemd Shah Mashiyat, Kashif Nizam Khan and SM Masud Karim,"Towards A Tableau Based High Performance Automated Theorem Prover", in proceedings of The 14th International Conference on Computer and Information Technology (ICCIT 2010), Dhaka, Bangladesh.</li>
-                            <li>Md. Raﬁqul Islam, Md. Zahidul Islam and Nazia Leyla,"A Matchmaking Algorithm for Resource Discovery on Grid", in proceedings of The International Conference on Information and Communication Technology, 7-9 March, 2007, Dhaka, Bangladesh, pp.193-196.</li>
-                            <li>Kashif Nizam Khan, Md. Zahidul Islam, Jinat Rehana and Md. Saidur Rahman,"Development of a Bangla Speech Driven Application", in proceedings of The International Conference on Computer and Information Technology, 28-30 December, Islamic University of Technology, Gazipur-1704, Bangladesh, pp.1015-1020.</li>
+                            <?php
+                                while($row = mysqli_fetch_assoc($result))
+                                {
+                                    echo "<li>";
+                                    echo "<h5>". $row["info"]."</h5>";
+                                    echo "</li>";
+                                }
+                            ?> 
                         </ol>
+
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

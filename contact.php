@@ -3,6 +3,13 @@ ob_start();
 session_start();
 include_once 'login and registration form\dbconnect.php';
 
+$sql = "SELECT * FROM `teacher` WHERE t_id=3";
+$basic_info = mysqli_query($connection, $sql);
+$row = mysqli_fetch_array($basic_info);
+
+
+$name = $row['name'];
+$designation = $row['designation'];
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +23,7 @@ include_once 'login and registration form\dbconnect.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Md Zahidul Islam</title>
+    <title><?php echo $name ?></title>
     <link rel="shortcut icon" href="logo.gif" type="image/gif">
 
     <!-- Bootstrap Core CSS -->
@@ -44,7 +51,7 @@ include_once 'login and registration form\dbconnect.php';
                 <li class="sidebar-brand">
                 <img src="zahid.png">
                     <a class="info">                        
-                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush ">Md. Zahidul Islam</strong><br>Assistant Professor<br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
+                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush "><?php echo $name ?></strong><br><?php echo $designation ?><br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
                     </a>
                 </li>
                 <li>
